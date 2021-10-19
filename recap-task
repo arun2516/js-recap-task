@@ -104,3 +104,41 @@ function uniq(arr){
 }
 console.log(uniq([1,2,3,2,4,5,5,3]));
 
+
+// BANK TASK:
+
+class Bank {
+ 
+  constructor(name, accType, accNo, balance) {
+    
+    this.name = name;
+    this.accType = accType;
+    this.accNo = accNo;
+    this.balance = balance;
+    
+  }
+  getBalance() {
+    return "Your balance is ₹" + this.balance;
+  }
+   withdraw(withdrawAmt) {
+    if (withdrawAmt <= this.balance) {
+      this.balance = this.balance - withdrawAmt;
+      return this.getBalance();
+    } else {
+      return "Insufficent funds. " + this.getBalance();
+    }
+  }
+  deposit(money){
+      
+      this.balance = this.balance + (+money);
+      return this.getBalance();
+  }
+}
+
+const Sourabh = new Bank("Sourabh", "Saving", 10001, 25000);
+const Lokesh = new Bank("Lokesh", "Saving", 10002, 10000);
+const Surya = new Bank("Surya", "Current", 10003, 10000000);
+const Asritha = new Bank("Asritha", "Current", 10004, 20000);
+
+console.log(Sourabh.deposit(2000));
+
