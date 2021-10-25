@@ -33,49 +33,25 @@ const scores = [
   
   
   //1st
-  let names = scores.map((data)=>{
-      return data.name;
-  });
-  console.log(names);
+ console.log(scores.map(({name})=> name));
   
   
   //2nd
-  let pass = scores.filter((data)=>{
-      if(data.marks>=40){
-          return data;
-      }
-  });
-  console.log(pass);
+ console.log(scores.filter(({marks})=> marks >= 40));
   
   
   //3rd
-  let fail = scores.filter((data)=>{
-      if(data.marks<40){
-          return data;
-      }
-  });
-  console.log(fail.map((data)=> {return data.name}));
+ console.log(scores.filter(({marks})=> marks < 40).map(({name})=> name));
   
   
   //4th
-  let mark = scores.map((data)=>{
-      return data.marks;
-  });
-  console.log(mark.reduce((a,b)=>{return a+b})/mark.length);
-  
+console.log((scores.reduce((sum,{marks})=> sum + marks,0)/scores.length).toFixed(3));
+ 
   
   
  // 5th
-  let mark = scores.map((data)=>{
-      return data.marks;
-  });
-  let maxi = mark.sort((a,b)=>b-a);
-  let topper = scores.filter((data)=>{
-      if(data.marks == maxi[0]){
-          return data;
-      }
-  });
-  topper.forEach((data)=>console.log(data.name));
+let maxi = scores.map(({marks})=> marks).reduce((a,b)=>{return Math.max(a,b)});
+console.log(scores.filter(({marks,name})=> marks == maxi ).map(({name})=>name));
   
   
   
